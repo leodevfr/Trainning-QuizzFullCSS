@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.quiz {
+  margin-top: 100px;
+}
+
+.quiz input.step1:checked ~ .container .q2,
+.quiz input.step2:checked ~ .container .q3,
+.quiz input.step3:checked ~ .container .q4 {
+  position: relative;
+  left: 0;
+}
+.quiz input.step4:checked ~ .container .status {
+  display: block;
+}
+.quiz input.step4:checked ~ .container .q {
+  position: relative !important;
+  left: 0 !important;
+  opacity: 1 !important;
+}
+.quiz input.step4:checked ~ .container .q h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.quiz input.step4:checked ~ .container .q label {
+  background-color: #e4e4e4;
+  padding: 30px;
+}
+.quiz input.step1:checked ~ .container .q1,
+.quiz input.step2:checked ~ .container .q2,
+.quiz input.step3:checked ~ .container .q3,
+.quiz input.step4:checked ~ .container .q4 {
+  position: absolute;
+  opacity: 0;
+}
+.quiz .score {
+  margin-top: 40px;
+}
+.quiz .score h3:after {
+  content: counter(score);
+}
+.quiz .container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  counter-reset: score;
+}
+.quiz .status {
+  display: none;
+}
+.quiz h2 {
+  max-width: 500px;
+  margin: 0 auto 30px;
+  color: #000;
+}
+.quiz label {
+  display: inline-block;
+  padding: 40px;
+  border-radius: 50%;
+  background-color: #058d7a;
+  color: #fff;
+  margin: 0 40px;
+  text-align: center;
+  display: inline-block;
+  width: 30px;
+  line-height: 30px;
+  transition: opacity 0.5s;
+}
+.quiz label:hover {
+  opacity: 0.7;
+}
+.quiz .q {
+  margin-bottom: 40px;
+  position: absolute;
+  left: -2000px;
+  transition: all 0.8s cubic-bezier(0.44, 0.25, 0.65, 0.38);
+  width: 100%;
+}
+.quiz .q1 {
+  position: relative;
+  left: 0;
+}
+.quiz input {
+  display: none;
+}
+.quiz .status {
+  margin-bottom: 20px;
+}
+.quiz input[id=yes1].step1:checked ~ .container .q1 label.correct,
+.quiz input[id=no2].step2:checked ~ .container .q2 label.correct,
+.quiz input[id=no3].step3:checked ~ .container .q3 label.correct,
+.quiz input[id=yes4].step4:checked ~ .container .q4 label.correct {
+  background-color: #86a238;
+  counter-increment: score;
+  color: #fff;
+}
+.quiz input[id=no1].step1:checked ~ .container .q1 label.wrong,
+.quiz input[id=yes2].step2:checked ~ .container .q2 label.wrong,
+.quiz input[id=yes3].step3:checked ~ .container .q3 label.wrong,
+.quiz input[id=no4].step4:checked ~ .container .q4 label.wrong {
+  background-color: #cf5957;
+  color: #fff;
+}
